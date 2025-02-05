@@ -6,4 +6,5 @@ The presented audio samples take into account segmentation and phonetic occurren
 As an example, these three audios:
 
 "abeja" and "asno" have 3 segments and 4 phonemes.
+
 "amarillo" has 4 segments and 5 phonemes.
