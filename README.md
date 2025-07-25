@@ -1,10 +1,15 @@
-# IEEE-Implicit-Segmentation
+# Automatic Phonetic Segmentation of the Yuhmu Language Using Mel Scale Spectral Parameters
 
-In this repository, only 3 audio files are added, described in Spanish but with their digital audio in the "Yuhmu" language, considering that the audio database is not publicly available.
-The presented audio samples take into account segmentation and phonetic occurrence for their analysis.
+**Autores:**  
+- Eric Ramos-Aguilar  
+- J. Arturo Olvera-López  
+- Iván Olmos-Pineda  
+- Ricardo Ramos-Aguilar  
 
-As an example, these three audios:
+**Afiliación:**  
+- BUAP, UPIIT-IPN  
+- BUAP  
+- BUAP  
+- UPIIT-IPN  
 
-"abeja" and "asno" have 3 segments and 4 phonemes.
-
-"amarillo" has 4 segments and 5 phonemes.
+---
