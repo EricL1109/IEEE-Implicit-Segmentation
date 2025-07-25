@@ -16,26 +16,30 @@ audio_files = [f for f in os.listdir(folder_path) if f.endswith('.wav')]
 
 with open(output_csv_path, "w", newline='') as csv_file:
     csv_writer = csv.writer(csv_file)
-    header = ["Archivo de Audio", "n_mels", "hop_length", "Umbral", "Grupos de Columnas de Ceros"]
+    header = ["Audio File", "n_mels", "hop_length", "Threshold", "Groups of Zero Columns"]
     csv_writer.writerow(header)
 
     with open(output_txt_path, "w") as txt_file:
         for audio_file in audio_files:
             audio_path = os.path.join(folder_path, audio_file)
             y, sr = librosa.load(audio_path)
-            tamano_ven = int(0.02 * sr)
-            hop_length_variants = [tamano_ven // 4, tamano_ven // 2, (tamano_ven // 4) * 3]
+            window_size = int(0.02 * sr)
+            hop_length_variants = [window_size // 4, window_size // 2, (window_size // 4) * 3]
 
-            txt_file.write(f"Procesando archivo: {audio_file}\n")
+            txt_file.write(f"Processing file: {audio_file}\n")
 
             for n_mels in n_mels_range:
                 for hop_length in hop_length_variants:
-                    mel_spectrogram = librosa.feature.melspectrogram(y=y, sr=sr, n_fft=tamano_ven, hop_length=hop_length, n_mels=n_mels, window='hann')
+                    mel_spectrogram = librosa.feature.melspectrogram(
+                        y=y, sr=sr, n_fft=window_size, hop_length=hop_length,
+                        n_mels=n_mels, window='hann'
+                    )
                     spectrogram = mel_spectrogram
 
                     spectrogram_matrix = spectrogram.reshape((spectrogram.shape[0], -1))
                     distance_scores = np.einsum("ij,ik->ij", spectrogram_matrix, spectrogram_matrix) / (
-                                    np.linalg.norm(spectrogram_matrix, axis=1)[:, None] * np.linalg.norm(spectrogram_matrix, axis=1)[:, None])
+                        np.linalg.norm(spectrogram_matrix, axis=1)[:, None] * np.linalg.norm(spectrogram_matrix, axis=1)[:, None]
+                    )
                     distance_scores_n = distance_scores / (np.max(distance_scores) - np.min(distance_scores))
 
                     distance_scores_n_reversed = distance_scores_n
@@ -67,17 +71,17 @@ with open(output_csv_path, "w", newline='') as csv_file:
                                             num_groups += 1
                                         last_index = index
 
-                                txt_file.write(f"  Procesando con hop_length = {hop_length}\n")
-                                txt_file.write(f"    Procesando con n_mels = {n_mels}\n")
-                                txt_file.write(f"      Umbral = {threshold}\n")
-                                txt_file.write(f"      Se encontraron {num_groups} grupos de columnas de ceros en el rango central.\n")
+                                txt_file.write(f"  Processing with hop_length = {hop_length}\n")
+                                txt_file.write(f"    Processing with n_mels = {n_mels}\n")
+                                txt_file.write(f"      Threshold = {threshold}\n")
+                                txt_file.write(f"      Found {num_groups} groups of zero columns in the central range.\n")
                                 row = [audio_file, n_mels, hop_length, threshold, num_groups]
                             else:
-                                txt_file.write(f"    No hay columnas de ceros en el rango central.\n")
+                                txt_file.write(f"    No zero columns in the central range.\n")
                                 row = [audio_file, n_mels, hop_length, threshold, "0"]
                         else:
-                            txt_file.write(f"    No se encontraron columnas de ceros.\n")
-                            row = [audio_file, n_mels, hop_length, threshold, "No se encontraron columnas de ceros."]
+                            txt_file.write(f"    No zero columns found.\n")
+                            row = [audio_file, n_mels, hop_length, threshold, "No zero columns found."]
                         
                         csv_writer.writerow(row)
 
@@ -104,7 +108,7 @@ with open(output_csv_path, "w", newline='') as csv_file:
                                         combined_img[:, selected_index] = 1
 
                         axs[1, 0].imshow(combined_img, cmap='jet', aspect='auto', origin='lower')
-                        axs[1, 0].set_title(f"Image with Threshold and Segments")
+                        axs[1, 0].set_title("Image with Threshold and Segments")
 
                         axs[1, 1].imshow(librosa.power_to_db(spectrogram, ref=np.max), cmap='inferno', aspect='auto', origin='lower')
                         if start_index <= end_index:
@@ -123,5 +127,5 @@ with open(output_csv_path, "w", newline='') as csv_file:
                         axs[1, 1].set_title("Spectrogram with Segments")
 
                         plt.tight_layout()
-                        plt.savefig(f"{audio_file}_n_mels_{n_mels}_hop_{hop_length}_umbral_{threshold}.png")
+                        plt.savefig(f"{audio_file}_n_mels_{n_mels}_hop_{hop_length}_threshold_{threshold}.png")
                         plt.close()
