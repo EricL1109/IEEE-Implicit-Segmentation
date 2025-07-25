@@ -14,7 +14,7 @@
 
 ---
 ## Methodology for the Implicit Segmentation of the Yuhmu Language
-![Imagen de ejemplo de segmentación automática](graphicalabstract_.png)
+![Image of method](graphicalabstract_.png)
 
 Para la ejecución de los scripts en Python (*.py*), es necesario contar con las siguientes librerías instaladas en el entorno:
 
@@ -43,4 +43,4 @@ To perform statistical analyses using the Friedman and ANOVA tests, the script `
 
 Finally, the K-means analysis is performed using the script `K-means analysis.py`. This procedure uses the spectrum images resulting from the audio samples to identify patterns and group the data. The results allow for observing the distribution and similarity of the phonetic segments in each case.
 
-![Imagen de ejemplo de segmentación automática](k-means results.png)
+![Image of kmeans](k-means results.png)
