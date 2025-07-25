@@ -32,3 +32,13 @@ pip install matplotlib
 A folder named **sample** is included, which contains a set of audio files used for the analysis. Since this sample is not public, it is referenced within the main code `Overlapped Spectrum Image Generator.py`.
 
 ---
+
+## Statistical Analysis: Friedman and ANOVA
+
+To perform statistical analyses using the Friedman and ANOVA tests, the script `Friedman-ANOVA analysis.py` is used. This analysis requires the file `SER Results.xlsx`, which contains the complete results of all the analyzed audio combinations, including the values of **SER (Segment Error Rate)** and the expected number of phonemes for each evaluated word.
+
+---
+
+## Clustering Analysis: K-means
+
+Finally, the K-means analysis is performed using the script `K-means analysis.py`. This procedure uses the spectrum images resulting from the audio samples to identify patterns and group the data. The results allow for observing the distribution and similarity of the phonetic segments in each case.
