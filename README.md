@@ -1,12 +1,12 @@
 # Automatic Phonetic Segmentation of the Yuhmu Language Using Mel Scale Spectral Parameters
 
-**Autores:**  
+**Authors:**  
 - Eric Ramos-Aguilar  
 - J. Arturo Olvera-López  
 - Iván Olmos-Pineda  
 - Ricardo Ramos-Aguilar  
 
-**Afiliación:**  
+**Affiliation:**  
 - BUAP, UPIIT-IPN  
 - BUAP  
 - BUAP  
