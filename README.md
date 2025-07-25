@@ -29,7 +29,7 @@ pip install librosa
 pip install matplotlib
 ```
 
-A folder named **sample** is included, which contains a set of audio files used for the analysis. Since this sample is not public, it is referenced within the main code `Overlapped Spectrum Image Generator.py`.
+A folder named **prueba** is included, which contains a set of audio files used for the analysis. Since this sample is not public, it is referenced within the main code `Overlapped Spectrum Image Generator.py`.
 
 ---
 
