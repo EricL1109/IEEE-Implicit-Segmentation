@@ -13,4 +13,4 @@
 - UPIIT-IPN  
 
 ---
-![Uploading graphicalabstract_cVHQDIf5.png…]()
+![Imagen de ejemplo de segmentación automática](ruta/a/tu/imagen.png)
