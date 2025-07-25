@@ -43,4 +43,5 @@ To perform statistical analyses using the Friedman and ANOVA tests, the script `
 
 Finally, the K-means analysis is performed using the script `K-means analysis.py`. This procedure uses the spectrum images resulting from the audio samples to identify patterns and group the data. The results allow for observing the distribution and similarity of the phonetic segments in each case.
 
-![Image of kmeans](k-means results.png)
+![Image of kmeans](k-means_results.png)
+
