@@ -3,7 +3,7 @@
 **Authors:**  
 - Eric Ramos-Aguilar  
 - J. Arturo Olvera-López  
-- Iván Olmos-Pineda  
+- Ivan Olmos-Pineda  
 - Ricardo Ramos-Aguilar  
 
 **Affiliation:**  
